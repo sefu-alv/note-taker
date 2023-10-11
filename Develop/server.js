@@ -7,7 +7,7 @@ const noteData = require('./db/db.json');
 
 const path = require("path");
 
-const port = process.env.port || 3001;
+const port = process.env.PORT || 3001;
 
 // This package allows you to add an id to an item
 const { v4: uuidv4 } = require('uuid');
@@ -60,5 +60,5 @@ return res.send();
 
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
