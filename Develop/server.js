@@ -38,11 +38,26 @@ app.post('/api/notes', (req, res) => {
   note.id = uuidv4();
 
   noteData.push(note);
-  
+
   fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
 
   res.json(note);
 });
+
+app.delete('/api/notes/:id', (req,res) => {
+
+const deleteNote = req.params.id;
+
+const notes = require("./db/db.json");
+
+console.log(notes)
+const noteIndex = notes.findIndex(note => note.id === deleteNote);
+notes.splice(noteIndex, 1);
+console.log(notes)
+fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+return res.send();
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
