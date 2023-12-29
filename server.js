@@ -39,7 +39,7 @@ app.post('/api/notes', (req, res) => {
 
   noteData.push(note);
 
-  fs.writeFileSync('./db/db.json', JSON.stringify(noteData));
+  fs.writeFile('./db/db.json', JSON.stringify(noteData));
 
   res.json(note);
 });
@@ -54,7 +54,7 @@ console.log(notes)
 const noteIndex = notes.findIndex(note => note.id === deleteNote);
 notes.splice(noteIndex, 1);
 console.log(notes)
-fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+fs.writeFile('./db/db.json', JSON.stringify(notes));
 return res.send();
 });
 
